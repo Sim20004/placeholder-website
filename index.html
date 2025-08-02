@@ -1,66 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="style.css">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome!</title>
-  <style>
-    body {
-      margin: 0;
-      overflow: hidden;
-      background: #000;
-    }
-    #ball {
-      position: absolute;
-      width: 50px;
-      height: 50px;
-      background: #4CAF50;
-      border-radius: 50%;
-      box-shadow: 0 0 15px #4CAF50;
-      transition: background-color 0.3s, box-shadow 0.3s;
-    }
-  </style>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome!</title>
+    
 </head>
 <body>
-        <h1 id="main">Welcome to (what will soon be) my website! <br> <br> I am still working hard to get this up and running, so just hang on tight! <br><br> Also, enjoy this bouncing ball while you wait!</h1>
-
+    <h1 id="main">Welcome to (what will soon be) my website! <br> <br> I am still working hard to get this up and running, so just hang on tight! <br><br> Also, enjoy this bouncing ball while you wait!</h1>
   <div id="ball"></div>
 
   <script>
-    const ball = document.getElementById('ball');
+      const ball = document.getElementById('ball');
     let x = 100;
     let y = 100;
-    let dx = 3;
-    let dy = 3;
-    const size = 50;
+    let dx = 9;
+    let dy = 9;
+    const ballSize = 50;
 
     function randomColor() {
-      return '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+      // Return a random hex color string
+      return '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0');
     }
 
     function animate() {
-      const w = window.innerWidth;
-      const h = window.innerHeight;
+      const maxWidth = window.innerWidth;
+      const maxHeight = window.innerHeight;
 
       x += dx;
       y += dy;
 
       let bounced = false;
 
-      if (x <= 0 || x + size >= w) {
+      if (x + ballSize >= maxWidth || x <= 0) {
         dx = -dx;
         bounced = true;
       }
-      if (y <= 0 || y + size >= h) {
+      if (y + ballSize >= maxHeight || y <= 0) {
         dy = -dy;
         bounced = true;
       }
 
       if (bounced) {
-        const c = randomColor();
-        ball.style.backgroundColor = c;
-        ball.style.boxShadow = `0 0 15px ${c}`;
+        const color = randomColor();
+        ball.style.backgroundColor = color;
+        ball.style.boxShadow = `0 0 15px ${color}`;
       }
 
       ball.style.left = x + 'px';
@@ -71,5 +56,6 @@
 
     animate();
   </script>
+    
 </body>
 </html>
