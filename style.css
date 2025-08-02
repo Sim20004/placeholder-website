@@ -26,11 +26,10 @@
     color:white;
     font-weight: 400;
     font-style: normal;
-    top:50px;
-    left: 70px;
     text-align: center;
+    top:50px;
+    left: 50%;
+    transform: translateX(-50%);
     font-size:4em;
 }
-
-
 
